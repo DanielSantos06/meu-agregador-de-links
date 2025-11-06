@@ -1,0 +1,35 @@
+// Este é o seu arquivo de schema do Prisma,
+// aprenda mais sobre ele em https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Se você escolheu MySQL no Passo 5, mude "postgresql" para "mysql"
+  provider = "postgresql" 
+  url      = env("DATABASE_URL") // Onde o Prisma vai achar o DB
+}
+
+// --- Nossos Modelos ---
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  username  String   @unique // O @username publico
+  password  String   // Vamos guardar o hash da senha
+  
+  // Um usuário pode ter MUITOS links
+  links     Link[]
+}
+
+model Link {
+  id        Int      @id @default(autoincrement())
+  title     String   // "Meu GitHub"
+  url       String   // "https://..."
+  
+  // O link pertence a UM usuário
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}

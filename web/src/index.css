@@ -1,0 +1,28 @@
+body {
+  padding: 2rem 1rem;
+}
+main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.links-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+.link-button {
+  display: block;
+  background-color: var(--primary);
+  color: var(--primary-inverse);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease-out;
+}
+.link-button:hover {
+  transform: scale(1.03);
+}
